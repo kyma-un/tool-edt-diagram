@@ -141,13 +141,13 @@ The EDT/WBS structure is defined in ```data.json```.
 
 ### Toolbar Actions
 
-- Expand all: opens the full tree.
-- Collapse levels: returns the tree to a compact view.
-- Expand selected branch: expands the full subtree of the selected node.
-- Collapse selected branch: collapses the full subtree of the selected node.
-- Center: recenters the visualization.
-- Export PNG: exports the current view as an image.
-- Export PDF: exports the current view as a PDF file.
+- Expandir todo: opens the full tree.
+- Colapsar niveles: returns the tree to a compact view.
+- Expandir rama seleccionada : expands the full subtree of the selected node.
+- Colapsar rama seleccionada : collapses the full subtree of the selected node.
+- Centrar: recenters the visualization.
+- Exportar PNG: exports the current view as an image.
+- Exportar PDF: exports the current view as a PDF file.
 
 ---
 
