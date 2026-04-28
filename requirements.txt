@@ -1,0 +1,13 @@
+# Visualizador EDT - dependencias locales
+#
+# Este proyecto no requiere paquetes externos de Python para ejecutarse.
+# Se sirve localmente con el módulo estándar de Python:
+#   python3 -m http.server 8000
+#
+# Requisito mínimo recomendado:
+# - Python >= 3.9
+#
+# Las librerías de frontend se cargan vía CDN en index.html:
+# - D3.js
+# - html2canvas
+# - jsPDF

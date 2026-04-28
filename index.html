@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualizador EDT</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Visualizador EDT</h1>
+    <p>Explora la estructura jerárquica del proyecto, selecciona nodos y exporta la vista.</p>
+  </div>
+  <div class="toolbar">
+    <button id="expandAll">Expandir todo</button>
+    <button id="collapseAll">Colapsar niveles</button>
+    <button id="expandBranch">Expandir rama seleccionada</button>
+    <button id="collapseBranch">Colapsar rama seleccionada</button>
+    <button id="centerView">Centrar</button>
+    <button id="exportPNG">Exportar PNG</button>
+    <button id="exportPDF">Exportar PDF</button>
+  </div>
+</header>
+
+<main class="app-shell">
+  <aside class="sidebar">
+    <section class="panel">
+      <h2>Resumen</h2>
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-label">Nodos</span>
+          <strong id="totalNodes">0</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Profundidad</span>
+          <strong id="treeDepth">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Nodo seleccionado</h2>
+      <div id="nodeDetails" class="node-details empty">
+        Selecciona un nodo para ver sus detalles.
+      </div>
+      <div id="breadcrumb" class="breadcrumb" style="margin-top:12px;"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Búsqueda</h2>
+      <input type="text" id="searchInput" placeholder="Nombre del nodo..." autocomplete="off" style="width:100%; padding:8px; border-radius:20px; border:1px solid #ccc; margin-bottom:8px;">
+      <div id="searchStatus" style="font-size:0.7rem; color:#4d7c73;"></div>
+    </section>
+
+    <section class="panel help-panel">
+      <h2>Interacción</h2>
+      <ul>
+        <li>Haz clic en un nodo para seleccionarlo.</li>
+        <li>Doble clic para expandir o colapsar sus hijos.</li>
+        <li>Usa la rueda del mouse para hacer zoom.</li>
+        <li>Arrastra el lienzo para desplazarte.</li>
+        <li><strong>Expandir rama</strong>: abre todo el subárbol del nodo seleccionado.</li>
+        <li><strong>Colapsar rama</strong>: cierra todo el subárbol del nodo seleccionado.</li>
+        <li><strong>Búsqueda</strong>: escribe y pulsa Enter; expande el camino y centra el nodo.</li>
+      </ul>
+    </section>
+  </aside>
+
+  <section class="workspace">
+    <div id="tree-container"></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
