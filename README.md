@@ -58,6 +58,8 @@ tool-edt-diagram/
 └── assets/
 ```
 
+---
+
 ## Requirements
 
 ### Local Requirements
