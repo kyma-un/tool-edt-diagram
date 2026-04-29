@@ -1,42 +1,42 @@
 # tool-edt-diagram
 
-Interactive web tool for visualizing, exploring, and exporting **EDT/WBS diagrams** for project planning.
+Herramienta web interactiva para visualizar, explorar y exportar **diagramas EDT/WBS** para la planificación de proyectos.
 
-This repository is part of the **KYMA Tools** ecosystem and provides a lightweight browser-based viewer for hierarchical project structures using a simple `data.json` file.
+Este repositorio forma parte del ecosistema **KYMA Tools** y proporciona un visor liviano basado en navegador para estructuras jerárquicas de proyectos usando un archivo simple `data.json`.
 
 ---
 
-## Overview
+## Descripción general
 
-**EDT Diagram Tool** allows users to represent a project as a hierarchical tree, commonly known as:
+**EDT Diagram Tool** permite representar un proyecto como un árbol jerárquico, conocido comúnmente como:
 
 - **EDT**: Estructura de Desglose del Trabajo
 - **WBS**: Work Breakdown Structure
 
-The tool is built with **HTML, CSS, and JavaScript**, using **D3.js** for tree visualization.
+La herramienta está construida con **HTML, CSS y JavaScript**, usando **D3.js** para la visualización del árbol.
 
-It is designed to be general-purpose and independent of any specific project domain.
-
----
-
-## Features
-
-- Interactive EDT/WBS tree visualization
-- Expand and collapse all nodes
-- Expand and collapse a selected branch
-- Select nodes and inspect their information
-- Breadcrumb path for selected nodes
-- Search nodes by name
-- Zoom and pan navigation
-- Automatic centering
-- Export diagram as PNG
-- Export diagram as PDF
-- Simple hierarchical data model based on `data.json`
-- No backend required
+Está diseñada para ser de propósito general e independiente de cualquier dominio específico de proyecto.
 
 ---
 
-## Repository Structure
+## Características
+
+- Visualización interactiva de árboles EDT/WBS
+- Expandir y colapsar todos los nodos
+- Expandir y colapsar una rama seleccionada
+- Seleccionar nodos e inspeccionar su información
+- Ruta de navegación para los nodos seleccionados
+- Búsqueda de nodos por nombre
+- Navegación con zoom y desplazamiento
+- Centrado automático
+- Exportación del diagrama como PNG
+- Exportación del diagrama como PDF
+- Modelo de datos jerárquico simple basado en `data.json`
+- No requiere backend
+
+---
+
+## Estructura del repositorio
 
 ```text
 tool-edt-diagram/
@@ -60,208 +60,233 @@ tool-edt-diagram/
 
 ---
 
-## Requirements
+## Requisitos
 
-### Local Requirements
+### Requisitos locales
 
-- Python 3.9 or higher recommended
-- Modern web browser
+- Python 3.9 o superior recomendado
+- Navegador web moderno
 
-### Frontend Dependencies
-The following libraries are loaded directly from CDN in index.html:
+### Dependencias del frontend
+
+Las siguientes librerías se cargan directamente desde CDN en `index.html`:
 
 - D3.js
 - html2canvas
 - jsPDF
 
-No external Python packages are required.
+No se requieren paquetes externos de Python.
 
-## Run Locally
+## Ejecutar localmente
 
-From the repository root:
+Desde la raíz del repositorio:
+
 ```bash
 python3 -m http.server 8000
 ```
-Then open:
+
+Luego abre:
+
 ```bash
 http://localhost:8000
 ```
-If you are using Windows and python3 does not work, try:
+
+Si estás usando Windows y `python3` no funciona, intenta:
+
 ```bash
 python -m http.server 8000
 ```
 
 ---
 
-## Data Model
+## Modelo de datos
 
-The EDT/WBS structure is defined in ```data.json```.
+La estructura EDT/WBS se define en `data.json`.
 
-## Basic Format
-```JSON
+## Formato básico
+
+```json
 {
-  "name": "Project name",
+  "name": "Nombre del proyecto",
   "children": [
     {
-      "name": "1. Planning",
+      "name": "1. Planeación",
       "children": [
-        { "name": "1.1 Define scope" },
-        { "name": "1.2 Identify deliverables" },
-        { "name": "1.3 Build WBS" }
+        { "name": "1.1 Definir alcance" },
+        { "name": "1.2 Identificar entregables" },
+        { "name": "1.3 Construir la EDT/WBS" }
       ]
     },
     {
-      "name": "2. Execution",
+      "name": "2. Ejecución",
       "children": [
-        { "name": "2.1 Develop deliverables" },
-        { "name": "2.2 Validate progress" }
+        { "name": "2.1 Desarrollar entregables" },
+        { "name": "2.2 Validar avance" }
       ]
     }
   ]
 }
 ```
-### Rules
 
-- Each node must include a name field.
-- Child nodes are defined inside the children array.
-- If a node has no children, the children field can be omitted.
-- The tree can have multiple hierarchical levels.
-- Node names should be clear and concise for better visualization.
+### Reglas
 
----
-
-## Usage
-
-### Navigation
-
-- Click a node to select it.
-- Double-click a node to expand or collapse its children.
-- Use the mouse wheel or trackpad to zoom.
-- Drag the canvas to pan the visualization.
-
-### Toolbar Actions
-
-- Expandir todo: opens the full tree.
-- Colapsar niveles: returns the tree to a compact view.
-- Expandir rama seleccionada : expands the full subtree of the selected node.
-- Colapsar rama seleccionada : collapses the full subtree of the selected node.
-- Centrar: recenters the visualization.
-- Exportar PNG: exports the current view as an image.
-- Exportar PDF: exports the current view as a PDF file.
+- Cada nodo debe incluir un campo `name`.
+- Los nodos hijos se definen dentro del arreglo `children`.
+- Si un nodo no tiene hijos, el campo `children` puede omitirse.
+- El árbol puede tener múltiples niveles jerárquicos.
+- Los nombres de los nodos deben ser claros y concisos para una mejor visualización.
 
 ---
 
-## Customization
+## Uso
 
-### Change the EDT/WBS Content
+### Navegación
 
-Edit:
+- Haz clic en un nodo para seleccionarlo.
+- Haz doble clic en un nodo para expandir o colapsar sus hijos.
+- Usa la rueda del mouse o el trackpad para hacer zoom.
+- Arrastra el lienzo para desplazar la visualización.
+
+### Acciones de la barra de herramientas
+
+- Expandir todo: abre el árbol completo.
+- Colapsar niveles: devuelve el árbol a una vista compacta.
+- Expandir rama seleccionada: expande todo el subárbol del nodo seleccionado.
+- Colapsar rama seleccionada: colapsa todo el subárbol del nodo seleccionado.
+- Centrar: vuelve a centrar la visualización.
+- Exportar PNG: exporta la vista actual como imagen.
+- Exportar PDF: exporta la vista actual como archivo PDF.
+
+---
+
+## Personalización
+
+### Cambiar el contenido de la EDT/WBS
+
+Edita:
+
 ```bash
 data.json
 ```
 
-### Change the Visual Style
+### Cambiar el estilo visual
 
-Edit:
+Edita:
+
 ```bash
 styles.css
 ```
 
-### Change the Interaction Logic
+### Cambiar la lógica de interacción
 
-Edit:
+Edita:
+
 ```bash
 script.js
 ```
 
-### Add More Examples
+### Agregar más ejemplos
 
-Place additional JSON files inside:
+Ubica archivos JSON adicionales dentro de:
+
 ```bash
 examples/
 ```
-Recommended naming pattern:
+
+Patrón de nombres recomendado:
+
 ```bash
-project-name-edt.json
+nombre-del-proyecto-edt.json
 ```
 
 ---
 
-## Example Use Cases
-This tool can be used for:
-- project planning
-- academic project organization
-- engineering project breakdowns
-- task decomposition
-- technical roadmap visualization
-- documentation of project scope
-- presentation of deliverable structures
-- project management reports
-- planning deliverables for GitHub-based projects
+## Casos de uso de ejemplo
+
+Esta herramienta puede usarse para:
+
+- planificación de proyectos
+- organización de proyectos académicos
+- desgloses de proyectos de ingeniería
+- descomposición de tareas
+- visualización de hojas de ruta técnicas
+- documentación del alcance de un proyecto
+- presentación de estructuras de entregables
+- informes de gestión de proyectos
+- planificación de entregables para proyectos basados en GitHub
 
 ---
 
-### Suggested Workflow
-1. Define the main project objective.
-2. Break the project into major work packages.
-3. Add subpackages, tasks, and deliverables.
-4. Save the hierarchy in data.json.
-5. Run the tool locally.
-6. Review the structure visually.
-7. Export the EDT/WBS as PNG or PDF.
-8. Include the exported file in reports, presentations, or project documentation.
+### Flujo de trabajo sugerido
+
+1. Define el objetivo principal del proyecto.
+2. Divide el proyecto en grandes paquetes de trabajo.
+3. Agrega subpaquetes, tareas y entregables.
+4. Guarda la jerarquía en `data.json`.
+5. Ejecuta la herramienta localmente.
+6. Revisa la estructura visualmente.
+7. Exporta la EDT/WBS como PNG o PDF.
+8. Incluye el archivo exportado en informes, presentaciones o documentación del proyecto.
 
 ---
 
-## Current Status
+## Estado actual
 
-Current status: **prototype**
+Estado actual: **prototipo**
 
-The tool is functional for:
-- interactive visualization
-- hierarchical navigation
-- node selection
-- breadcrumb display
-- search
-- zoom and pan
-- PNG export
-- PDF export
+La herramienta es funcional para:
 
----
-
-## Roadmap
-Planned improvements:
-- Import JSON files from the browser
-- Export the current structure as JSON
-- Add editable nodes from the interface
-- Add support for additional node metadata, such as:
-  - description
-  - owner
-  - status
-  - priority
-  - due date
-- Add dark mode
-- Add multiple tree layout options
-- Add automatic validation for data.json
-- Add GitHub Pages deployment
-- Add downloadable example templates
-- Add support for multiple languages
+- visualización interactiva
+- navegación jerárquica
+- selección de nodos
+- visualización de ruta de navegación
+- búsqueda
+- zoom y desplazamiento
+- exportación a PNG
+- exportación a PDF
 
 ---
 
-## KYMA Tools Ecosystem
+## Hoja de ruta
 
-This repository is part of KYMA Tools, a collection of general-purpose software tools for project planning, documentation, automation, visualization, and technical workflows.
+Mejoras planificadas:
 
-This repository follows the KYMA Tools naming convention:
+- Importar archivos JSON desde el navegador
+- Exportar la estructura actual como JSON
+- Agregar nodos editables desde la interfaz
+- Agregar soporte para metadatos adicionales de nodos, tales como:
+  - descripción
+  - responsable
+  - estado
+  - prioridad
+  - fecha límite
+- Agregar modo oscuro
+- Agregar múltiples opciones de diseño de árbol
+- Agregar validación automática para `data.json`
+- Agregar despliegue en GitHub Pages
+- Agregar plantillas de ejemplo descargables
+- Agregar soporte para múltiples idiomas
+
+---
+
+## Ecosistema KYMA Tools
+
+Este repositorio forma parte de KYMA Tools, una colección de herramientas de software de propósito general para planificación de proyectos, documentación, automatización, visualización y flujos de trabajo técnicos.
+
+Este repositorio sigue la convención de nombres de KYMA Tools:
+
 ```bash
 tool-firstword-secondword-...-lastword
 ```
-For this tool:
+
+Para esta herramienta:
+
 ```bash
 tool-edt-diagram
 ```
-Recommended repository topics:
+
+Temas recomendados para el repositorio:
+
 ```bash
 kyma-tools
 software-tools
@@ -281,24 +306,27 @@ open-source
 
 ---
 
-## Contributing
-Contributions are welcome.
+## Contribuciones
 
-Suggested contribution areas:
-- improving the user interface
-- adding data validation
-- improving export quality
-- adding editable nodes
-- improving documentation
-- adding more examples
-- improving mobile layout
-- adding GitHub Pages deployment
+Las contribuciones son bienvenidas.
 
-Before contributing, please keep the tool general-purpose and independent from any specific project.
+Áreas sugeridas para contribuir:
+
+- mejorar la interfaz de usuario
+- agregar validación de datos
+- mejorar la calidad de exportación
+- agregar nodos editables
+- mejorar la documentación
+- agregar más ejemplos
+- mejorar el diseño en dispositivos móviles
+- agregar despliegue en GitHub Pages
+
+Antes de contribuir, por favor mantén la herramienta de propósito general e independiente de cualquier proyecto específico.
 
 ---
 
-## License
-This project is released under the MIT License.
+## Licencia
 
-See the LICENSE file for details.
+Este proyecto se publica bajo la Licencia MIT.
+
+Consulta el archivo `LICENSE` para más detalles.
