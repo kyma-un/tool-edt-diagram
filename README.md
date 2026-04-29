@@ -2,7 +2,9 @@
 
 Herramienta web interactiva para visualizar, explorar y exportar **diagramas EDT/WBS** para la planificación de proyectos.
 
-Este repositorio forma parte del ecosistema [KYMA Tools](https://github.com/kyma-un/kyma-software-tools) y proporciona un visor liviano basado en navegador para representar estructuras jerárquicas de proyectos a partir de un archivo `data.json`.
+Este repositorio forma parte del ecosistema KYMA Tools y proporciona un visor liviano basado en navegador para representar estructuras jerárquicas de proyectos a partir de un archivo `data.json`.
+
+*Nota*: Al hacer parte de Kyma, este repositorio sigue la convención de estructuración de [KYMA Software Tools](https://github.com/kyma-un/kyma-software-tools)
 
 ---
 
