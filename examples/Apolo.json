@@ -1,0 +1,776 @@
+{
+  "name": "Apolo Project — Brazo Robótico 6 GDL",
+  "children": [
+    {
+      "name": "1. Gestión de Proyecto",
+      "children": [
+        { "name": "1.1 Definición de requerimientos del sistema (funcionales y no funcionales)" },
+        { "name": "1.2 Especificaciones técnicas (payload, velocidad, repetibilidad, alcance, resolución)" },
+        { "name": "1.3 Plan de proyecto y cronograma (Gantt con hitos por articulación)" },
+        { "name": "1.4 Gestión de riesgos técnicos y plan de contingencia" },
+        { "name": "1.5 Revisiones de diseño formales (PDR · CDR · FRR)" },
+        { "name": "1.6 Control de cambios y versiones del diseño" },
+        { "name": "1.7 Gestión del presupuesto y seguimiento de costos" },
+        { "name": "1.8 Coordinación de equipo, roles y responsabilidades" },
+        { "name": "1.9 Gestión del repositorio y flujo de trabajo Git" }
+      ]
+    },
+    {
+      "name": "2. Diseño Mecánico",
+      "children": [
+        {
+          "name": "2.1 Análisis y Especificaciones Mecánicas",
+          "children": [
+            { "name": "2.1.1 Definición del espacio de trabajo (workspace 3D) y alcance nominal" },
+            { "name": "2.1.2 Definición de rangos angulares de cada GDL (límites de soft y hard stop)" },
+            { "name": "2.1.3 Carga útil (payload) y torques requeridos por articulación (peor caso)" },
+            { "name": "2.1.4 Análisis de cinemática directa — parámetros de Denavit-Hartenberg" },
+            { "name": "2.1.5 Análisis de cinemática inversa analítica (solución cerrada para 6 GDL)" },
+            { "name": "2.1.6 Verificación del espacio de trabajo resultante de la cinemática" },
+            { "name": "2.1.7 Análisis de singularidades cinemáticas" },
+            { "name": "2.1.8 Modelo dinámico Lagrangiano (matrices M, C, G por articulación)" },
+            { "name": "2.1.9 Modelo dinámico Hamiltoniano" },
+            { "name": "2.1.10 Estimación preliminar de masas, centros de masa e inercias" }
+          ]
+        },
+        {
+          "name": "2.2 Dimensionamiento por Articulación",
+          "children": [
+            { "name": "2.2.1 Torque requerido articulación 6 — Muñeca Yaw (efector + carga útil)" },
+            { "name": "2.2.2 Torque requerido articulación 5 — Muñeca Roll" },
+            { "name": "2.2.3 Torque requerido articulación 4 — Muñeca Pitch" },
+            { "name": "2.2.4 Torque requerido articulación 3 — Codo" },
+            { "name": "2.2.5 Torque requerido articulación 2 — Hombro (torque máximo del sistema)" },
+            { "name": "2.2.6 Torque requerido articulación 1 — Base Yaw" },
+            { "name": "2.2.7 Cálculo de velocidades angulares y aceleraciones máximas por eje" },
+            { "name": "2.2.8 Definición de factores de seguridad mecánicos por articulación" },
+            { "name": "2.2.9 Estimación de longitudes de eslabones (optimización de espacio de trabajo)" }
+          ]
+        },
+        {
+          "name": "2.3 Selección de Transmisiones",
+          "children": [
+            { "name": "2.3.1 Definición del tipo de transmisión por articulación (criterios de selección)" },
+            { "name": "2.3.2 Articulación 6 — Transmisión directa o engranaje cónico pequeño" },
+            { "name": "2.3.3 Articulación 5 — Engranaje cónico o transmisión diferencial" },
+            { "name": "2.3.4 Articulación 4 — Engranaje cónico o transmisión diferencial" },
+            { "name": "2.3.5 Articulación 3 — Reductor planetario o Harmonic Drive (compact)" },
+            { "name": "2.3.6 Articulación 2 — Reductor planetario o Harmonic Drive (mayor torque)" },
+            { "name": "2.3.7 Articulación 1 — Tren de engranajes / correa + polea" },
+            { "name": "2.3.8 Cálculo de relación de reducción y verificación de eficiencia por etapa" },
+            { "name": "2.3.9 Análisis de backlash y rigidez torsional por transmisión" },
+            { "name": "2.3.10 Diseño de ejes, chavetas y acoples de cada transmisión" }
+          ]
+        },
+        {
+          "name": "2.4 Selección de Componentes Estándar",
+          "children": [
+            { "name": "2.4.1 Rodamientos articulación 6 (tipo, dimensiones, capacidad de carga)" },
+            { "name": "2.4.2 Rodamientos articulación 5" },
+            { "name": "2.4.3 Rodamientos articulación 4" },
+            { "name": "2.4.4 Rodamientos articulación 3" },
+            { "name": "2.4.5 Rodamientos articulación 2" },
+            { "name": "2.4.6 Rodamientos articulación 1 (radial-axial cruzado para base)" },
+            { "name": "2.4.7 Insertos roscados heat-set para piezas impresas (M2 a M6)" },
+            { "name": "2.4.8 Tornillería, pernos y elementos de fijación estructural" },
+            { "name": "2.4.9 Retenes, sellos y pasacables para cableado interno" },
+            { "name": "2.4.10 Acoples flexibles y rígidos de motor" }
+          ]
+        },
+        {
+          "name": "2.5 Selección de Materiales para Manufactura Aditiva",
+          "children": [
+            { "name": "2.5.1 Definición de requisitos mecánicos por pieza (resistencia, rigidez, temperatura)" },
+            { "name": "2.5.2 Evaluación de materiales FDM — Eslabones estructurales (PETG-CF, PA12-CF, ABS)" },
+            { "name": "2.5.3 Evaluación de materiales SLS/MJF — Piezas de alta precisión (Nylon PA12, PA11)" },
+            { "name": "2.5.4 Evaluación de materiales SLA/MSLA — Carcasas y piezas de detalle (Tough resin)" },
+            { "name": "2.5.5 Selección de material por articulación y pieza" },
+            { "name": "2.5.6 Verificación de compatibilidad material con cargas y temperatura de operación" },
+            { "name": "2.5.7 Definición de tratamientos post-impresión por material (curado UV, temple)" }
+          ]
+        },
+        {
+          "name": "2.6 Optimización Topológica",
+          "children": [
+            { "name": "2.6.1 Definición del espacio de diseño (domain) y volumen no modificable por pieza" },
+            { "name": "2.6.2 Definición de cargas, condiciones de frontera y casos de carga críticos" },
+            { "name": "2.6.3 Incorporación de restricciones de manufactura aditiva (overhang, espesor mínimo, simetría)" },
+            { "name": "2.6.4 Optimización topológica eslabón 6 — conjunto efector" },
+            { "name": "2.6.5 Optimización topológica eslabón 5 — muñeca roll" },
+            { "name": "2.6.6 Optimización topológica eslabón 4 — muñeca pitch" },
+            { "name": "2.6.7 Optimización topológica eslabón 3 — antebrazo (pieza crítica)" },
+            { "name": "2.6.8 Optimización topológica eslabón 2 — brazo superior (peor caso de carga)" },
+            { "name": "2.6.9 Optimización topológica eslabón 1 — torso giratorio" },
+            { "name": "2.6.10 Optimización topológica base estructural" },
+            { "name": "2.6.11 Suavizado y reinterpretación de geometría resultante (smoothing)" },
+            { "name": "2.6.12 Generación de geometría inicial para cada eslabón (punto de partida CAD)" },
+            { "name": "2.6.13 Verificación preliminar de factor de seguridad en geometría optimizada" }
+          ]
+        },
+        {
+          "name": "2.7 Diseño CAD — Articulación 6 (Muñeca Yaw / Efector)",
+          "children": [
+            { "name": "2.7.1 Modelado del cuerpo del eslabón 6 a partir de geometría topológica" },
+            { "name": "2.7.2 Diseño del flange de efector final (patrón de orificios estándar ISO 9409)" },
+            { "name": "2.7.3 Integración y alojamiento del motor articulación 6" },
+            { "name": "2.7.4 Integración y alojamiento del reductor articulación 6" },
+            { "name": "2.7.5 Integración y alojamiento del encoder absoluto articulación 6" },
+            { "name": "2.7.6 Diseño e integración del sensor de fin de carrera / home articulación 6" },
+            { "name": "2.7.7 Diseño de canales y guías de cableado interno articulación 6" },
+            { "name": "2.7.8 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.7.9 Interfaz mecánica de acople hacia articulación 5" },
+            { "name": "2.7.10 Generación de planos de taller articulación 6" }
+          ]
+        },
+        {
+          "name": "2.8 Diseño CAD — Articulación 5 (Muñeca Roll)",
+          "children": [
+            { "name": "2.8.1 Modelado del cuerpo del eslabón 5 a partir de geometría topológica" },
+            { "name": "2.8.2 Integración y alojamiento del motor articulación 5" },
+            { "name": "2.8.3 Integración y alojamiento del reductor articulación 5" },
+            { "name": "2.8.4 Integración y alojamiento del encoder absoluto articulación 5" },
+            { "name": "2.8.5 Diseño e integración del sensor de fin de carrera / home articulación 5" },
+            { "name": "2.8.6 Alojamiento e integración de IMU (en conjunto de muñeca)" },
+            { "name": "2.8.7 Diseño de canales y guías de cableado interno articulación 5" },
+            { "name": "2.8.8 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.8.9 Interfaz mecánica de acople hacia articulaciones 4 y 6" },
+            { "name": "2.8.10 Generación de planos de taller articulación 5" }
+          ]
+        },
+        {
+          "name": "2.9 Diseño CAD — Articulación 4 (Muñeca Pitch)",
+          "children": [
+            { "name": "2.9.1 Modelado del cuerpo del eslabón 4 a partir de geometría topológica" },
+            { "name": "2.9.2 Integración y alojamiento del motor articulación 4" },
+            { "name": "2.9.3 Integración y alojamiento del reductor articulación 4" },
+            { "name": "2.9.4 Integración y alojamiento del encoder absoluto articulación 4" },
+            { "name": "2.9.5 Diseño e integración del sensor de fin de carrera / home articulación 4" },
+            { "name": "2.9.6 Alojamiento e integración del sensor de fuerza-torque 6 ejes (F/T) en muñeca" },
+            { "name": "2.9.7 Diseño de canales y guías de cableado interno articulación 4" },
+            { "name": "2.9.8 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.9.9 Interfaz mecánica de acople hacia articulaciones 3 y 5" },
+            { "name": "2.9.10 Generación de planos de taller articulación 4" }
+          ]
+        },
+        {
+          "name": "2.10 Diseño CAD — Articulación 3 (Codo)",
+          "children": [
+            { "name": "2.10.1 Modelado del cuerpo del eslabón 3 (antebrazo) a partir de geometría topológica" },
+            { "name": "2.10.2 Integración y alojamiento del motor articulación 3" },
+            { "name": "2.10.3 Integración y alojamiento del reductor articulación 3" },
+            { "name": "2.10.4 Integración y alojamiento del encoder absoluto articulación 3" },
+            { "name": "2.10.5 Diseño e integración del sensor de fin de carrera / home articulación 3" },
+            { "name": "2.10.6 Alojamiento del sensor de temperatura del motor articulación 3" },
+            { "name": "2.10.7 Diseño de canales y guías de cableado a lo largo del eslabón 3" },
+            { "name": "2.10.8 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.10.9 Interfaz mecánica de acople hacia articulaciones 2 y 4" },
+            { "name": "2.10.10 Generación de planos de taller articulación 3" }
+          ]
+        },
+        {
+          "name": "2.11 Diseño CAD — Articulación 2 (Hombro)",
+          "children": [
+            { "name": "2.11.1 Modelado del cuerpo del eslabón 2 (brazo superior) a partir de geometría topológica" },
+            { "name": "2.11.2 Integración y alojamiento del motor articulación 2 (mayor torque del sistema)" },
+            { "name": "2.11.3 Integración y alojamiento del reductor articulación 2" },
+            { "name": "2.11.4 Integración y alojamiento del encoder absoluto articulación 2" },
+            { "name": "2.11.5 Diseño e integración del sensor de fin de carrera / home articulación 2" },
+            { "name": "2.11.6 Alojamiento del sensor de temperatura del motor articulación 2" },
+            { "name": "2.11.7 Diseño de canales y guías de cableado a lo largo del eslabón 2" },
+            { "name": "2.11.8 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.11.9 Interfaz mecánica de acople hacia articulaciones 1 y 3" },
+            { "name": "2.11.10 Generación de planos de taller articulación 2" }
+          ]
+        },
+        {
+          "name": "2.12 Diseño CAD — Articulación 1 (Base Giratoria / Yaw)",
+          "children": [
+            { "name": "2.12.1 Modelado del cuerpo del eslabón 1 (torso) a partir de geometría topológica" },
+            { "name": "2.12.2 Integración y alojamiento del motor articulación 1" },
+            { "name": "2.12.3 Integración y alojamiento del reductor articulación 1" },
+            { "name": "2.12.4 Integración y alojamiento del encoder absoluto articulación 1" },
+            { "name": "2.12.5 Diseño e integración del sensor de fin de carrera / home articulación 1" },
+            { "name": "2.12.6 Alojamiento del sensor de temperatura del motor articulación 1" },
+            { "name": "2.12.7 Diseño de canales y guías de cableado internos — pase del torso a la base" },
+            { "name": "2.12.8 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.12.9 Interfaz mecánica de acople hacia base y articulación 2" },
+            { "name": "2.12.10 Generación de planos de taller articulación 1" }
+          ]
+        },
+        {
+          "name": "2.13 Diseño CAD — Base Estructural",
+          "children": [
+            { "name": "2.13.1 Modelado de la base a partir de geometría topológica" },
+            { "name": "2.13.2 Diseño de placa de anclaje y sistema de fijación (suelo / mesa de trabajo)" },
+            { "name": "2.13.3 Alojamiento de PCBs principales, drivers y sistema de potencia" },
+            { "name": "2.13.4 Gestión y organización del cableado interno en la base" },
+            { "name": "2.13.5 Diseño de panel de conectores externos (alimentación, comunicaciones, E-Stop)" },
+            { "name": "2.13.6 Ventilación y disipación térmica de la base" },
+            { "name": "2.13.7 Definición de tolerancias y ajustes para manufactura aditiva" },
+            { "name": "2.13.8 Generación de planos de taller base" }
+          ]
+        },
+        {
+          "name": "2.14 Ensamble CAD Completo",
+          "children": [
+            { "name": "2.14.1 Ensamble CAD conjunto muñeca (articulaciones 4-5-6)" },
+            { "name": "2.14.2 Ensamble CAD articulación 3 + conjunto muñeca" },
+            { "name": "2.14.3 Ensamble CAD articulación 2 + articulación 3" },
+            { "name": "2.14.4 Ensamble CAD articulación 1 + eslabón 2" },
+            { "name": "2.14.5 Ensamble CAD completo sobre base" },
+            { "name": "2.14.6 Detección y resolución de interferencias entre piezas" },
+            { "name": "2.14.7 Simulación de rango de movimiento completo (verificación de colisiones)" },
+            { "name": "2.14.8 Verificación del espacio de trabajo 3D resultante vs. especificaciones" },
+            { "name": "2.14.9 Generación de archivo URDF/SDF para gemelo digital" },
+            { "name": "2.14.10 Renderizado y presentación visual del sistema completo" }
+          ]
+        },
+        {
+          "name": "2.15 Análisis Estructural (FEA — Validación Post-CAD)",
+          "children": [
+            { "name": "2.15.1 Configuración de materiales impresos en FEA (propiedades anisotrópicas)" },
+            { "name": "2.15.2 FEA eslabón 2 — brazo superior (caso de carga más crítico)" },
+            { "name": "2.15.3 FEA eslabón 3 — antebrazo" },
+            { "name": "2.15.4 FEA conjunto muñeca (eslabones 4-5-6)" },
+            { "name": "2.15.5 FEA base y torso" },
+            { "name": "2.15.6 Validación del factor de seguridad por pieza (> FS mínimo definido)" },
+            { "name": "2.15.7 Análisis de fatiga (ciclos de carga para vida útil)" },
+            { "name": "2.15.8 Análisis modal (frecuencias naturales y riesgo de resonancia)" },
+            { "name": "2.15.9 Rediseño CAD basado en resultados FEA (iteración hasta convergencia)" }
+          ]
+        },
+        {
+          "name": "2.16 Manufactura Aditiva",
+          "children": [
+            { "name": "2.16.1 Selección de tecnología AM por pieza (FDM, SLS, MJF, SLA)" },
+            { "name": "2.16.2 Definición de orientación óptima de impresión por pieza" },
+            { "name": "2.16.3 Diseño y estrategia de soportes de impresión (generación y remoción)" },
+            { "name": "2.16.4 Configuración de parámetros de impresión por material (infill, capas, temperatura, velocidad)" },
+            { "name": "2.16.5 Impresión de prototipos funcionales de verificación" },
+            { "name": "2.16.6 Impresión de piezas finales — eslabón 6 (efector)" },
+            { "name": "2.16.7 Impresión de piezas finales — eslabón 5 (muñeca roll)" },
+            { "name": "2.16.8 Impresión de piezas finales — eslabón 4 (muñeca pitch)" },
+            { "name": "2.16.9 Impresión de piezas finales — eslabón 3 (antebrazo)" },
+            { "name": "2.16.10 Impresión de piezas finales — eslabón 2 (brazo superior)" },
+            { "name": "2.16.11 Impresión de piezas finales — eslabón 1 (torso)" },
+            { "name": "2.16.12 Impresión de piezas finales — base" },
+            { "name": "2.16.13 Post-procesado: remoción de soportes y limpieza" },
+            { "name": "2.16.14 Post-procesado: curado UV o tratamiento térmico según material" },
+            { "name": "2.16.15 Post-procesado: acabado superficial (lijado, pintura, recubrimiento protector)" },
+            { "name": "2.16.16 Inserción de insertos roscados heat-set en piezas impresas" },
+            { "name": "2.16.17 Control de calidad dimensional (metrología y verificación vs. planos)" },
+            { "name": "2.16.18 Fabricación de piezas complementarias mecanizadas CNC (ejes, flanges críticos, engranajes)" }
+          ]
+        },
+        {
+          "name": "2.17 Ensamble Mecánico",
+          "children": [
+            { "name": "2.17.1 Instalación de insertos, rodamientos y retenes en cada pieza" },
+            { "name": "2.17.2 Ensamble conjunto muñeca (articulaciones 4-5-6) con sensores y motores" },
+            { "name": "2.17.3 Montaje de transmisiones y ajuste de backlash — muñeca" },
+            { "name": "2.17.4 Ensamble articulación 3 — codo + integración conjunto muñeca" },
+            { "name": "2.17.5 Ensamble articulación 2 — hombro + eslabón 3" },
+            { "name": "2.17.6 Ensamble articulación 1 — torso giratorio + eslabón 2" },
+            { "name": "2.17.7 Montaje del brazo completo sobre base" },
+            { "name": "2.17.8 Tendido, organización y sujeción del cableado interno" },
+            { "name": "2.17.9 Verificación geométrica y alineación de ejes de cada articulación" },
+            { "name": "2.17.10 Verificación de rangos de movimiento mecánico libre sin cargas" }
+          ]
+        },
+        {
+          "name": "2.18 Seguridad y Normatividad",
+          "children": [
+            { "name": "2.18.1 Revisión norma ISO 10218-1 (robots industriales — requisitos de seguridad)" },
+            { "name": "2.18.2 Análisis de riesgos mecánicos (aplastamiento, corte, colisión)" },
+            { "name": "2.18.3 Verificación de topes de fin de carrera mecánicos (hard stops) en cada GDL" },
+            { "name": "2.18.4 Diseño de guardas y protecciones físicas donde aplique" },
+            { "name": "2.18.5 Etiquetado y señalética de seguridad" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Diseño Electrónico",
+      "children": [
+        {
+          "name": "3.1 Arquitectura del Sistema Electrónico",
+          "children": [
+            { "name": "3.1.1 Diagrama de bloques del sistema electrónico completo" },
+            { "name": "3.1.2 Selección del bus de comunicación entre drivers y controlador (CAN-FD / RS-485 / EtherCAT)" },
+            { "name": "3.1.3 Definición de topología de red (maestro-esclavo, daisy-chain, estrella)" },
+            { "name": "3.1.4 Definición de niveles de voltaje del sistema (lógica, potencia motor)" },
+            { "name": "3.1.5 Definición de arquitectura de cómputo (MCU tiempo real + SBC de alto nivel)" }
+          ]
+        },
+        {
+          "name": "3.2 Sistema de Potencia",
+          "children": [
+            { "name": "3.2.1 Cálculo del presupuesto de potencia total del sistema" },
+            { "name": "3.2.2 Selección de fuente de alimentación principal (switching PSU)" },
+            { "name": "3.2.3 Diseño de distribución de potencia (barras, conductores, calibre)" },
+            { "name": "3.2.4 Protecciones: fusibles por rama, varistores, TVS, crowbar" },
+            { "name": "3.2.5 Reguladores y convertidores DC-DC (5 V, 3.3 V, 12 V, 24 V)" },
+            { "name": "3.2.6 Filtros de EMI / EMC en líneas de potencia y señal" },
+            { "name": "3.2.7 Circuito de frenado regenerativo / resistencia de freno (si aplica)" },
+            { "name": "3.2.8 Sistema de apagado seguro (power sequencing)" }
+          ]
+        },
+        {
+          "name": "3.3 Selección de Actuadores (Motores)",
+          "children": [
+            { "name": "3.3.1 Definición del tipo de motor por articulación (DC brushed, BLDC, servo)" },
+            { "name": "3.3.2 Motor articulación 6 — Muñeca Yaw (compacto, bajo torque)" },
+            { "name": "3.3.3 Motor articulación 5 — Muñeca Roll" },
+            { "name": "3.3.4 Motor articulación 4 — Muñeca Pitch" },
+            { "name": "3.3.5 Motor articulación 3 — Codo" },
+            { "name": "3.3.6 Motor articulación 2 — Hombro (mayor potencia del sistema)" },
+            { "name": "3.3.7 Motor articulación 1 — Base Yaw" },
+            { "name": "3.3.8 Actuador del efector final (servo, motor DC, solenoide)" },
+            { "name": "3.3.9 Verificación de curvas par-velocidad y punto de operación" },
+            { "name": "3.3.10 Verificación de dimensiones de motor vs. espacio disponible en CAD" }
+          ]
+        },
+        {
+          "name": "3.4 Drivers y Etapas de Potencia",
+          "children": [
+            { "name": "3.4.1 Selección / diseño de driver por articulación (comercial vs. custom PCB)" },
+            { "name": "3.4.2 Diseño etapa de potencia H-Bridge para motores DC brushed" },
+            { "name": "3.4.3 Diseño etapa de control BLDC con FOC (Field Oriented Control)" },
+            { "name": "3.4.4 Implementación de control de corriente en el driver (inner loop)" },
+            { "name": "3.4.5 Protecciones de driver: sobrecorriente, sobretensión y sobretemperatura" },
+            { "name": "3.4.6 Diseño y layout PCB de drivers (1 diseño base, 6 unidades)" },
+            { "name": "3.4.7 Prueba unitaria de cada driver con carga resistiva" }
+          ]
+        },
+        {
+          "name": "3.5 Sensores",
+          "children": [
+            { "name": "3.5.1 Encoder absoluto articulación 1 (protocolo: SSI / BiSS-C / SPI)" },
+            { "name": "3.5.2 Encoder absoluto articulación 2" },
+            { "name": "3.5.3 Encoder absoluto articulación 3" },
+            { "name": "3.5.4 Encoder absoluto articulación 4" },
+            { "name": "3.5.5 Encoder absoluto articulación 5" },
+            { "name": "3.5.6 Encoder absoluto articulación 6" },
+            { "name": "3.5.7 Sensores de fin de carrera / home — 1 por articulación (x6)" },
+            { "name": "3.5.8 Sensores de corriente por canal de motor (x6) para estimación de torque" },
+            { "name": "3.5.9 Sensores de temperatura en motores y drivers" },
+            { "name": "3.5.10 IMU 6 ejes en el efector (acelerómetro + giroscopio)" },
+            { "name": "3.5.11 Sensor de fuerza-torque 6 ejes (F/T) integrado en muñeca" },
+            { "name": "3.5.12 Cámara RGB-D o estéreo para visión artificial" },
+            { "name": "3.5.13 Calibración y validación de cada sensor" }
+          ]
+        },
+        {
+          "name": "3.6 Microcontrolador y Cómputo Embebido",
+          "children": [
+            { "name": "3.6.1 Selección de MCU de tiempo real (STM32H7, TMS320 u equivalente)" },
+            { "name": "3.6.2 Selección de SBC / módulo de cómputo de alto nivel (NVIDIA Jetson, RPi CM4)" },
+            { "name": "3.6.3 Diseño de PCB placa de control principal (MCU + interfaces)" },
+            { "name": "3.6.4 Interfaces de comunicación: CAN-FD, SPI, I2C, UART, USB, Ethernet" },
+            { "name": "3.6.5 Gestión de energía y RTC del MCU" },
+            { "name": "3.6.6 Conector JTAG/SWD para programación y depuración" }
+          ]
+        },
+        {
+          "name": "3.7 Diseño y Fabricación de PCBs",
+          "children": [
+            { "name": "3.7.1 Esquemático completo del sistema (placa principal + drivers + sensores)" },
+            { "name": "3.7.2 Layout PCB placa de control principal" },
+            { "name": "3.7.3 Layout PCB driver de motor (diseño base para 6 unidades)" },
+            { "name": "3.7.4 Layout PCB de expansión de sensores / I-O" },
+            { "name": "3.7.5 Revisión de diseño: DRC, ERC, integridad de señal" },
+            { "name": "3.7.6 Generación de Gerbers y orden de fabricación de PCBs" },
+            { "name": "3.7.7 Ensamble SMD y THT de las PCBs" },
+            { "name": "3.7.8 Prueba de continuidad, niveles de tensión y funcionalidad básica" }
+          ]
+        },
+        {
+          "name": "3.8 Comunicaciones y Seguridad Electrónica",
+          "children": [
+            { "name": "3.8.1 Interfaz USB / Ethernet hacia SBC o computador de control" },
+            { "name": "3.8.2 Definición e implementación del protocolo maestro-esclavo" },
+            { "name": "3.8.3 Circuito de E-Stop de hardware (paro de emergencia por hardware, categoría 0/1)" },
+            { "name": "3.8.4 Indicadores de estado: LEDs, zumbador de alarma" },
+            { "name": "3.8.5 Comunicación inalámbrica opcional (WiFi / Bluetooth)" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Modelado y Control",
+      "children": [
+        {
+          "name": "4.1 Modelado Matemático",
+          "children": [
+            { "name": "4.1.1 Tabla de parámetros Denavit-Hartenberg para los 6 GDL" },
+            { "name": "4.1.2 Matrices de transformación homogénea T0→1 hasta T0→6" },
+            { "name": "4.1.3 Implementación y validación de cinemática directa" },
+            { "name": "4.1.4 Cinemática inversa analítica — solución cerrada para configuración del brazo" },
+            { "name": "4.1.5 Cinemática inversa numérica — método del Jacobiano (Newton-Raphson / DLS)" },
+            { "name": "4.1.6 Jacobiano geométrico y analítico — cálculo y verificación" },
+            { "name": "4.1.7 Análisis de singularidades — detección y estrategias de manejo" },
+            { "name": "4.1.8 Modelo dinámico Lagrangiano completo (matrices M, C, G)" },
+            { "name": "4.1.9 Modelo dinámico Hamiltoniano" },
+            { "name": "4.1.10 Identificación experimental de parámetros inerciales reales" }
+          ]
+        },
+        {
+          "name": "4.2 Planificación de Trayectorias",
+          "children": [
+            { "name": "4.2.1 Interpolación en espacio articular (joint space) — punto a punto" },
+            { "name": "4.2.2 Interpolación cartesiana (task space) — línea recta" },
+            { "name": "4.2.3 Perfil de velocidad trapezoidal (aceleración constante)" },
+            { "name": "4.2.4 Perfil de velocidad curva-S (jerk limitado para suavidad)" },
+            { "name": "4.2.5 Trayectorias circulares y curvas libres (splines cúbicos, B-splines)" },
+            { "name": "4.2.6 Movimiento continuo multi-segmento (blending de trayectorias)" },
+            { "name": "4.2.7 Planificación con evitación de obstáculos (RRT, RRT*, PRM)" },
+            { "name": "4.2.8 Respeto de límites de velocidad, aceleración y jerk por articulación" }
+          ]
+        },
+        {
+          "name": "4.3 Diseño de Controladores",
+          "children": [
+            { "name": "4.3.1 Controlador PID independiente por articulación (lazo de posición)" },
+            { "name": "4.3.2 Control de par computado (Computed Torque / Feedback Linearization)" },
+            { "name": "4.3.3 Control en espacio de tarea (task-space control — posición cartesiana)" },
+            { "name": "4.3.4 Control de impedancia / admitancia (interacción con entorno)" },
+            { "name": "4.3.5 Control de fuerza-posición híbrido" },
+            { "name": "4.3.6 Sintonización de ganancias (Ziegler-Nichols, optimización automática)" },
+            { "name": "4.3.7 Análisis de estabilidad — márgenes de ganancia y fase" },
+            { "name": "4.3.8 Anti-windup y gestión de saturación de actuadores" }
+          ]
+        },
+        {
+          "name": "4.4 Fusión Sensórica",
+          "children": [
+            { "name": "4.4.1 Filtro de Kalman Extendido (EKF) para estimación de estado" },
+            { "name": "4.4.2 Fusión encoder absoluto + IMU para estimación de pose del efector" },
+            { "name": "4.4.3 Estimación de torque a partir de corriente de motor (modelo electromecánico)" },
+            { "name": "4.4.4 Compensación de offset y deriva de sensores" },
+            { "name": "4.4.5 Detección de colisión externa por análisis de residuos de torque" }
+          ]
+        },
+        {
+          "name": "4.5 Simulación del Control",
+          "children": [
+            { "name": "4.5.1 Modelo de simulación dinámica en MATLAB/Simulink o Python (scipy)" },
+            { "name": "4.5.2 Validación de controladores en simulación (seguimiento de referencia, perturbaciones)" },
+            { "name": "4.5.3 Hardware-in-the-Loop (HIL) — MCU real con modelo virtual del robot" },
+            { "name": "4.5.4 Comparación simulación vs. respuesta real tras integración" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5. SW y SDK",
+      "children": [
+        {
+          "name": "5.1 Firmware (MCU — Tiempo Real)",
+          "children": [
+            { "name": "5.1.1 Configuración de HAL y periféricos (timers, ADC, CAN-FD, SPI, UART)" },
+            { "name": "5.1.2 Rutina de inicialización del sistema y autoconsistencia de hardware" },
+            { "name": "5.1.3 Procedimiento de homing automático articulación por articulación" },
+            { "name": "5.1.4 Generación de señales PWM para control de motores" },
+            { "name": "5.1.5 Lectura y decodificación de encoders absolutos (SSI, BiSS-C, SPI)" },
+            { "name": "5.1.6 Lectura de sensores de corriente (ADC) y estimación de torque" },
+            { "name": "5.1.7 Lectura de sensores de fin de carrera / home" },
+            { "name": "5.1.8 Lectura de sensores de temperatura" },
+            { "name": "5.1.9 Loop de control en tiempo real con RTOS (FreeRTOS / Zephyr — periodo configurable)" },
+            { "name": "5.1.10 Implementación del controlador (PID + feedforward) en firmware" },
+            { "name": "5.1.11 Protocolo de comunicación con nivel superior (framing, CRC, ACK/NACK)" },
+            { "name": "5.1.12 Rutinas de seguridad: watchdog, E-Stop hardware, límites de corriente" },
+            { "name": "5.1.13 Gestión de modos de operación: idle, calibración, operación, fallo" },
+            { "name": "5.1.14 Registro de eventos y errores en memoria no volátil (flash logging)" }
+          ]
+        },
+        {
+          "name": "5.2 Ingeniería de Software",
+          "children": [
+            { "name": "5.2.1 Definición de arquitectura de software (capas: HW abstraction, control, aplicación, UI)" },
+            { "name": "5.2.2 Estándares de código y estilo (linters: flake8, ruff; formateadores: black, clang-format)" },
+            { "name": "5.2.3 Estrategia de branching Git (main, develop, feature, hotfix)" },
+            { "name": "5.2.4 Pipeline CI/CD: tests automáticos, linting, builds y cobertura de código" },
+            { "name": "5.2.5 Gestión de dependencias y entornos reproducibles (venv, Docker, conda)" },
+            { "name": "5.2.6 Logging estructurado y sistema de telemetría (niveles: DEBUG, INFO, WARN, ERROR)" }
+          ]
+        },
+        {
+          "name": "5.3 SDK / Librería de Control",
+          "children": [
+            { "name": "5.3.1 API de cinemática directa (fk) e inversa (ik) — Python / C++" },
+            { "name": "5.3.2 API de planificación de trayectorias (generación y validación)" },
+            { "name": "5.3.3 API de ejecución de movimiento (seguimiento de trayectoria en tiempo real)" },
+            { "name": "5.3.4 API de control por articulación (posición, velocidad, torque)" },
+            { "name": "5.3.5 API de lectura de estado del robot (posición, velocidad, corrientes, temperatura)" },
+            { "name": "5.3.6 API de gestión de modos y comandos del sistema" },
+            { "name": "5.3.7 Manejo de errores, excepciones y códigos de estado del SDK" },
+            { "name": "5.3.8 Documentación del SDK (docstrings, generación con Sphinx / Doxygen)" },
+            { "name": "5.3.9 Ejemplos y scripts de demo del SDK" },
+            { "name": "5.3.10 Tests unitarios e integración del SDK (pytest / Google Test)" }
+          ]
+        },
+        {
+          "name": "5.4 Middleware",
+          "children": [
+            { "name": "5.4.1 Capa de abstracción de hardware (HAL software) — desacopla firmware del SDK" },
+            { "name": "5.4.2 Máquina de estados del robot (FSM: init, home, idle, run, error, e-stop)" },
+            { "name": "5.4.3 Gestor de comunicaciones inter-proceso (ZMQ, shared memory, DDS)" },
+            { "name": "5.4.4 Gestor de eventos, callbacks y sistema de notificaciones" },
+            { "name": "5.4.5 Integración opcional con ROS2 (nodo de control, topics, services, actions)" }
+          ]
+        },
+        {
+          "name": "5.5 Módulo de Visión por Computadora",
+          "children": [
+            { "name": "5.5.1 Selección e integración de cámara (USB3, GigE, MIPI CSI)" },
+            { "name": "5.5.2 Calibración intrínseca de la cámara (patrón de tablero de ajedrez)" },
+            { "name": "5.5.3 Calibración extrínseca cámara-robot (Hand-Eye calibration — eye-in-hand / eye-to-hand)" },
+            { "name": "5.5.4 Pipeline de adquisición y preprocesamiento de imagen" },
+            { "name": "5.5.5 Detección y segmentación de objetos (OpenCV / PyTorch / YOLO)" },
+            { "name": "5.5.6 Estimación de pose 6D de objetos de interés" },
+            { "name": "5.5.7 Integración del resultado de visión con el planificador de trayectorias" },
+            { "name": "5.5.8 Validación del módulo de visión con objetos reales" }
+          ]
+        },
+        {
+          "name": "5.6 Interfaces de Usuario",
+          "children": [
+            {
+              "name": "5.6.1 CLI — Interfaz de Línea de Comandos",
+              "children": [
+                { "name": "Diseño de la estructura de comandos y subcomandos" },
+                { "name": "Parsing de argumentos (argparse, Click o Typer)" },
+                { "name": "Comandos de movimiento (move-joint, move-cartesian, home, stop)" },
+                { "name": "Comandos de diagnóstico y lectura de estado" },
+                { "name": "Modo scripting y ejecución de secuencias desde archivo" },
+                { "name": "Ayuda integrada, validación de entradas y mensajes de error claros" }
+              ]
+            },
+            {
+              "name": "5.6.2 TUI — Interfaz de Terminal Interactiva",
+              "children": [
+                { "name": "Framework TUI (Textual, Rich o curses)" },
+                { "name": "Monitor de estado en tiempo real (posición, velocidad, corriente por eje)" },
+                { "name": "Panel de jogging manual articulación por articulación" },
+                { "name": "Visualización de alarmas, alertas y logs en tiempo real" },
+                { "name": "Panel de configuración de parámetros del sistema" }
+              ]
+            },
+            {
+              "name": "5.6.3 GUI — Interfaz Gráfica de Usuario",
+              "children": [
+                { "name": "Selección del framework (Qt / PyQt6, Dear PyGui, web-based)" },
+                { "name": "Visualización 3D del brazo en tiempo real (modelo URDF renderizado)" },
+                { "name": "Panel de control y jog manual (botones por articulación y cartesiano)" },
+                { "name": "Editor gráfico de trayectorias (punto a punto y rutas)" },
+                { "name": "Monitor de telemetría con gráficas de señales en tiempo real" },
+                { "name": "Gestión de programas y secuencias de movimiento" },
+                { "name": "Panel de configuración y parámetros del sistema" },
+                { "name": "Pantalla de alarmas, historial de eventos y diagnóstico" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "5.7 Gemelo Digital",
+          "children": [
+            { "name": "5.7.1 Selección del simulador físico (Gazebo Harmonic, Webots, MuJoCo, PyBullet)" },
+            { "name": "5.7.2 Generación y verificación del modelo URDF / SDF del brazo" },
+            { "name": "5.7.3 Configuración de propiedades físicas (masa, inercia, fricción, límites)" },
+            { "name": "5.7.4 Sincronización bidireccional en tiempo real con el robot físico" },
+            { "name": "5.7.5 Validación y prueba de trayectorias en gemelo antes de ejecutar en real" },
+            { "name": "5.7.6 Análisis y reproducción de datos históricos de operación" }
+          ]
+        },
+        {
+          "name": "5.8 SCADA / Monitoreo",
+          "children": [
+            { "name": "5.8.1 Adquisición y transmisión de datos de todos los sensores" },
+            { "name": "5.8.2 Almacenamiento en base de datos de series de tiempo (InfluxDB / TimescaleDB / SQLite)" },
+            { "name": "5.8.3 Dashboards de monitoreo en tiempo real (Grafana o nativo)" },
+            { "name": "5.8.4 Sistema de alarmas configurables y gestión de alertas" },
+            { "name": "5.8.5 Reportes automáticos de ciclos, productividad y estadísticas de uso" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "6. Integración del Sistema",
+      "children": [
+        {
+          "name": "6.1 Integración Mecánico–Electrónica",
+          "children": [
+            { "name": "6.1.1 Instalación de motores en articulaciones 4-5-6 (conjunto muñeca)" },
+            { "name": "6.1.2 Instalación de motores en articulaciones 1-2-3" },
+            { "name": "6.1.3 Instalación de encoders absolutos en cada articulación (1-6)" },
+            { "name": "6.1.4 Conexión de sensores de fin de carrera / home en cada articulación" },
+            { "name": "6.1.5 Instalación del sensor F/T en muñeca e IMU en efector" },
+            { "name": "6.1.6 Montaje de PCBs y drivers en la base y eslabones" },
+            { "name": "6.1.7 Tendido, etiquetado y sujeción del cableado completo" },
+            { "name": "6.1.8 Verificación de impedancias, continuidad y ausencia de cortocircuitos" }
+          ]
+        },
+        {
+          "name": "6.2 Integración Electrónica–Firmware",
+          "children": [
+            { "name": "6.2.1 Flash y programación del MCU (toolchain, OpenOCD / ST-Link)" },
+            { "name": "6.2.2 Configuración y prueba del bus de comunicación (CAN-FD / RS-485)" },
+            { "name": "6.2.3 Verificación de señales digitales y analógicas en osciloscopio" },
+            { "name": "6.2.4 Prueba de cada driver con su motor real (movimiento sin carga)" },
+            { "name": "6.2.5 Calibración de sensores de corriente (comparación con pinza amperimétrica)" },
+            { "name": "6.2.6 Verificación de lectura de encoders (resolución, dirección, errores)" },
+            { "name": "6.2.7 Verificación de lectura y funcionalidad de sensores de fin de carrera" }
+          ]
+        },
+        {
+          "name": "6.3 Integración Firmware–SDK",
+          "children": [
+            { "name": "6.3.1 Prueba end-to-end del protocolo de comunicación (integridad de tramas)" },
+            { "name": "6.3.2 Verificación de todos los comandos del SDK ejecutados sobre firmware real" },
+            { "name": "6.3.3 Prueba de lectura de telemetría completa en tiempo real desde SDK" },
+            { "name": "6.3.4 Medición y validación de latencia y jitter del ciclo de control" },
+            { "name": "6.3.5 Prueba del homing automático completo desde el SDK" }
+          ]
+        },
+        {
+          "name": "6.4 Integración del Sistema Completo",
+          "children": [
+            { "name": "6.4.1 Integración del controlador (capa de control) con el SDK" },
+            { "name": "6.4.2 Integración GUI/TUI con el SDK y el firmware" },
+            { "name": "6.4.3 Sincronización del gemelo digital con el robot físico en operación real" },
+            { "name": "6.4.4 Integración del módulo de visión con el planificador de trayectorias" },
+            { "name": "6.4.5 Integración del sensor F/T con el lazo de control de fuerza" },
+            { "name": "6.4.6 Integración del sistema SCADA con todos los subsistemas" },
+            { "name": "6.4.7 Prueba de E-Stop de sistema completo (hardware + software)" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "7. Verificación y Validación",
+      "children": [
+        {
+          "name": "7.1 Pruebas Mecánicas",
+          "children": [
+            { "name": "7.1.1 Verificación dimensional de piezas impresas vs. planos de taller" },
+            { "name": "7.1.2 Verificación de rangos angulares reales articulación por articulación" },
+            { "name": "7.1.3 Prueba de carga estática (payload máximo sin movimiento)" },
+            { "name": "7.1.4 Prueba de carga dinámica (movimiento con payload nominal)" },
+            { "name": "7.1.5 Medición de backlash en cada transmisión" },
+            { "name": "7.1.6 Prueba de rigidez estructural y deflexión bajo carga" },
+            { "name": "7.1.7 Verificación de topes de fin de carrera mecánicos (hard stops)" }
+          ]
+        },
+        {
+          "name": "7.2 Pruebas Electrónicas",
+          "children": [
+            { "name": "7.2.1 Pruebas de continuidad y cortocircuito en todas las PCBs" },
+            { "name": "7.2.2 Verificación de niveles de tensión en todos los rails de potencia" },
+            { "name": "7.2.3 Prueba de drivers con carga resistiva (potencia disipada)" },
+            { "name": "7.2.4 Verificación de lectura y resolución de encoders" },
+            { "name": "7.2.5 Calibración y verificación de sensores de corriente" },
+            { "name": "7.2.6 Verificación del circuito de E-Stop de hardware" },
+            { "name": "7.2.7 Prueba de compatibilidad electromagnética (EMI básica)" }
+          ]
+        },
+        {
+          "name": "7.3 Pruebas de Firmware",
+          "children": [
+            { "name": "7.3.1 Prueba de rutina de homing por cada articulación de forma individual" },
+            { "name": "7.3.2 Verificación del periodo y jitter del loop de control en tiempo real" },
+            { "name": "7.3.3 Prueba de protocolo de comunicación (integridad, latencia, errores)" },
+            { "name": "7.3.4 Prueba de activación del E-Stop por hardware y recuperación" },
+            { "name": "7.3.5 Prueba de manejo de fallos: sobrecorriente, sobretemperatura, pérdida de encoder" },
+            { "name": "7.3.6 Prueba de watchdog y reset seguro del sistema" }
+          ]
+        },
+        {
+          "name": "7.4 Pruebas de Control y Movimiento",
+          "children": [
+            { "name": "7.4.1 Verificación de cinemática directa (posición real medida vs. calculada)" },
+            { "name": "7.4.2 Verificación de cinemática inversa (alcanzar 20+ puntos conocidos en el espacio)" },
+            { "name": "7.4.3 Prueba de movimiento articular punto a punto — perfil trapezoidal" },
+            { "name": "7.4.4 Prueba de movimiento articular — perfil curva-S" },
+            { "name": "7.4.5 Prueba de trayectorias cartesianas lineales" },
+            { "name": "7.4.6 Prueba de trayectorias continuas (splines y blending)" },
+            { "name": "7.4.7 Medición de repetibilidad (ISO 9283 — mínimo 30 ciclos por punto)" },
+            { "name": "7.4.8 Medición de precisión de posicionamiento absoluto" },
+            { "name": "7.4.9 Prueba de velocidad y aceleración máximas por articulación" },
+            { "name": "7.4.10 Prueba de control de fuerza / impedancia con el sensor F/T" }
+          ]
+        },
+        {
+          "name": "7.5 Pruebas de Software e Interfaces",
+          "children": [
+            { "name": "7.5.1 Tests unitarios del SDK (cobertura > 80%)" },
+            { "name": "7.5.2 Tests de integración SDK ↔ firmware (todos los comandos)" },
+            { "name": "7.5.3 Prueba funcional completa de CLI (todos los comandos)" },
+            { "name": "7.5.4 Prueba funcional completa de TUI (todos los paneles y controles)" },
+            { "name": "7.5.5 Prueba funcional completa de GUI (todos los módulos)" },
+            { "name": "7.5.6 Prueba de sincronización del gemelo digital con el robot real" },
+            { "name": "7.5.7 Prueba del sistema SCADA (alarmas, logs, dashboards)" }
+          ]
+        },
+        {
+          "name": "7.6 Validación Final del Sistema",
+          "children": [
+            { "name": "7.6.1 Demostración de tarea pick & place completa (tomar y colocar objeto)" },
+            { "name": "7.6.2 Demostración de tarea asistida por visión artificial" },
+            { "name": "7.6.3 Demostración de tarea con control de fuerza / cumplimiento" },
+            { "name": "7.6.4 Validación contra todos los requerimientos del sistema definidos en 1.1" },
+            { "name": "7.6.5 Prueba de endurance — operación continua ≥ 2 horas sin fallo" },
+            { "name": "7.6.6 Revisión y aceptación final con stakeholders / jurado evaluador" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8. Documentación",
+      "children": [
+        {
+          "name": "8.1 Documentación Técnica de Diseño",
+          "children": [
+            { "name": "8.1.1 Memoria de diseño mecánico (cinemática, dinámica, dimensionamiento, topo opt, FEA)" },
+            { "name": "8.1.2 Memoria de manufactura aditiva (materiales, parámetros, decisiones por pieza)" },
+            { "name": "8.1.3 Memoria de diseño electrónico (arquitectura, selección de componentes, PCBs)" },
+            { "name": "8.1.4 Memoria de modelado matemático y control (DH, dinámico, controladores)" },
+            { "name": "8.1.5 Memoria de software y SDK (arquitectura, decisiones de diseño)" },
+            { "name": "8.1.6 Planos mecánicos de taller completos (tolerancias, acabados, insertos)" },
+            { "name": "8.1.7 Esquemáticos electrónicos completos y archivos de diseño PCB" },
+            { "name": "8.1.8 Diagramas de arquitectura de software (capas, módulos, flujos de datos)" },
+            { "name": "8.1.9 Informe completo de Verificación y Validación (V&V)" }
+          ]
+        },
+        {
+          "name": "8.2 Documentación de Producto",
+          "children": [
+            { "name": "8.2.1 BOM (Bill of Materials) completa con costos, proveedores y referencias" },
+            { "name": "8.2.2 Datasheet del robot (especificaciones técnicas, límites, rendimiento medido)" },
+            { "name": "8.2.3 Manual de operación del usuario (CLI, TUI, GUI)" },
+            { "name": "8.2.4 Manual de mantenimiento y calibración del sistema" },
+            { "name": "8.2.5 Guía de instalación, puesta en marcha y homing inicial" }
+          ]
+        },
+        {
+          "name": "8.3 Documentación de Software",
+          "children": [
+            { "name": "8.3.1 API Reference del SDK (generada con Sphinx / Doxygen)" },
+            { "name": "8.3.2 README principal del repositorio (instalación, uso rápido, estructura)" },
+            { "name": "8.3.3 Wiki del proyecto (arquitectura, decisiones de diseño, guías de contribución)" },
+            { "name": "8.3.4 Changelog y notas de versión (semver)" },
+            { "name": "8.3.5 Tutoriales de uso del SDK, CLI y GUI con ejemplos paso a paso" }
+          ]
+        },
+        {
+          "name": "8.4 Presentación del Proyecto",
+          "children": [
+            { "name": "8.4.1 Diapositivas de presentación ejecutiva y técnica" },
+            { "name": "8.4.2 Póster técnico del proyecto" },
+            { "name": "8.4.3 Video de demostración del brazo en operación (tareas reales)" },
+            { "name": "8.4.4 Repositorio GitHub organizado, documentado y con README completo" }
+          ]
+        }
+      ]
+    }
+  ]
+}
