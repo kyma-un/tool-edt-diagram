@@ -4,7 +4,7 @@ Herramienta web interactiva para visualizar, explorar y exportar **diagramas EDT
 
 Este repositorio forma parte del ecosistema KYMA Tools y proporciona un visor liviano basado en navegador para representar estructuras jerárquicas de proyectos a partir de un archivo `data.json`.
 
-*Nota*: Al hacer parte de Kyma, este repositorio sigue la convención de estructuración de [KYMA Software Tools](https://github.com/kyma-un/kyma-software-tools)
+> **Nota:** Este repositorio hace parte del ecosistema **[KYMA Software Tools](https://github.com/kyma-un/kyma-software-tools)** y sigue sus convenciones de estructura, documentación y nomenclatura.
 
 ---
 
