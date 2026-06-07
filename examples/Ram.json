@@ -1,0 +1,85 @@
+{
+  "name": "RAM - Robot agrícola motorizado",
+  "children": [
+    {
+      "name": "1. MECÁNICO",
+      "children": [
+        {
+          "name": "1.1 Estructura del vehículo"
+        },
+        {
+          "name": "1.2 Caracterización de motores",
+          "children": [
+            { "name": "1.2.1 Corriente" },
+            { "name": "1.2.2 Velocidad" },
+            { "name": "1.2.3 Torque" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. ELECTRÓNICO",
+      "children": [
+        {
+          "name": "2.1 Calibración de sensores",
+          "children": [
+            { "name": "2.1.1 IMU" },
+            { "name": "2.1.2 Encoder" },
+            { "name": "2.1.3 GPS" },
+            { "name": "2.1.4 Cámara RGB" },
+            { "name": "2.1.5 Proximidad" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. SOFTWARE",
+      "children": [
+        {
+          "name": "3.1 Simulación",
+          "children": [
+            { "name": "3.1.1 Dinámica de los motores - Matlab" },
+            { "name": "3.1.2 Filtro de Kalman extendido - Matlab" },
+            { "name": "3.1.3 Control" },
+            { "name": "3.1.4 Entorno - CoppeliaSim" },
+            { "name": "3.1.5 Cosimulación" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. INTEGRACIÓN",
+      "children": [
+        {
+          "name": "4.1 Mecánico - Electrónico",
+          "children": [
+            { "name": "4.1.1 Alimentación - Protecciones" },
+            { "name": "4.1.2 Conexión controlador - driver" },
+            { "name": "4.1.3 Conexión entre controladores" },
+            { "name": "4.1.4 Conexión controlador - sensores" }
+          ]
+        },
+        {
+          "name": "4.2 Software - Electrónico",
+          "children": [
+            {
+              "name": "4.2.1 Programación de controladores",
+              "children": [
+                { "name": "4.2.1.1 RASPI" },
+                { "name": "4.2.1.2 ESP32" },
+                { "name": "4.2.1.3 DSPIC" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5. TELEMETRÍA",
+      "children": [
+        { "name": "5.1 Comunicación" },
+        { "name": "5.2 Interfaz visualización de datos" }
+      ]
+    }
+  ]
+}

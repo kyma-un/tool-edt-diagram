@@ -46,7 +46,7 @@ loadTree();
 
 async function loadTree() {
   try {
-    const response = await fetch("./data.json");
+    const response = await fetch("./examples/Ram.json");
     if (!response.ok) {
       throw new Error(`No se pudo cargar data.json (${response.status})`);
     }
@@ -124,8 +124,8 @@ function collapseBranch(node) {
 function centerOnNode(node) {
   setTimeout(() => {
     const scale = 0.8;
-    const tx = width/2 - node.x * scale;
-    const ty = height/2 - node.y * scale;
+    const tx = width / 2 - node.x * scale;
+    const ty = height / 2 - node.y * scale;
     svg.transition().duration(500)
       .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
   }, 100);
@@ -301,7 +301,7 @@ function layoutColumnsDynamic() {
 
     // Posicionar descendientes de esta rama (uso de layoutBranch original)
     const startY = branch.y + CHILD_GAP_Y;
-    layoutBranch(branch, branch.x - (branchWidths[i] / 2) + NODE_WIDTH/2, startY, 1);
+    layoutBranch(branch, branch.x - (branchWidths[i] / 2) + NODE_WIDTH / 2, startY, 1);
   }
 }
 // ============================================================================
